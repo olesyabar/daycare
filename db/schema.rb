@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_010304) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_031914) do
   create_table "children", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_010304) do
     t.integer "guardian_id", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.boolean "type"
+    t.integer "child_id", null: false
+    t.integer "guardian_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_events_on_child_id"
+    t.index ["guardian_id"], name: "index_events_on_guardian_id"
+  end
+
   create_table "guardians", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -31,4 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_010304) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "children"
+  add_foreign_key "events", "guardians"
 end
