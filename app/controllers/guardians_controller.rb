@@ -2,6 +2,9 @@ class GuardiansController < ApplicationController
 
   before_action :set_guardian, only: [:show]
 
+  def login
+  end
+
   def index
     @guardians = Guardian.all
   end

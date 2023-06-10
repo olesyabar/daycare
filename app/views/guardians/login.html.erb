@@ -1,0 +1,13 @@
+<%= form_with url: "/guardians/login", method: :get do |form| %>
+    <%= form.text_field :id %><br />
+    <%= form.label :first_name, "Guardian First Name" %>
+    <%= form.text_field :first_name %><br />
+    <%= form.label :last_name, "Guardian Last Name" %>
+    <%= form.text_field :last_name %><br />
+    <%= form.submit "Fake Login"%>
+<% end %>
+
+<% if params[:id] %>
+    <% @guardian = Guardian.find_by_id(params[:id]) %>
+    <% controller.redirect_to @guardian %>
+<% end %>
