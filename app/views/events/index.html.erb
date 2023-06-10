@@ -19,9 +19,9 @@
                 <% guardian = Guardian.find_by_id(event.guardian_id) %>
                 <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
                 <% if event.event_type
-                    event_name = "Check In"
+                    event_name = "Drop Off"
                 else
-                    event_name = "Check Out"
+                    event_name = "Pick Up"
                 end %>
                 <tr>
                     <td><%= child_name %></td>
