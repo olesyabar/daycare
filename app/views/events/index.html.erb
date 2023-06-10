@@ -1,0 +1,36 @@
+<h1>Journal Log</h1>
+
+<div id="events">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Child</th>
+                <th>Date & Time</th>
+                <th>Event Type</th>
+                <th>Guardian</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <% @events.each do |event| %>
+                <% child = Child.find_by_id(event.child_id) %>
+                <% child_name = child.first_name + ' '+ child.last_name %>
+                <% guardian = Guardian.find_by_id(event.guardian_id) %>
+                <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
+                <% if event.event_type
+                    event_name = "Check In"
+                else
+                    event_name = "Check Out"
+                end %>
+                <tr>
+                    <td><%= child_name %></td>
+                    <td><%= event_name %></td>
+                    <td><%= event.created_at.strftime("%a, %B %d, %Y %I:%M %p") %></td>
+                    <td><%= guardian_name %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+</div>
