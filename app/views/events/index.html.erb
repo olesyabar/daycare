@@ -2,12 +2,12 @@
 
 <div id="events">
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Child</th>
-                <th>Date & Time</th>
                 <th>Event Type</th>
+                <th>Date & Time</th>
                 <th>Guardian</th>
             </tr>
         </thead>
@@ -20,10 +20,12 @@
                 <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
                 <% if event.event_type
                     event_name = "Drop Off"
+                    row_class = "table-warning"
                 else
                     event_name = "Pick Up"
+                    row_class = "table-info"
                 end %>
-                <tr>
+                <tr class="<%= row_class =%>">
                     <td><%= child_name %></td>
                     <td><%= event_name %></td>
                     <td><%= event.created_at.strftime("%a, %B %d, %Y %I:%M %p") %></td>
