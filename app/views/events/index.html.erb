@@ -2,13 +2,13 @@
 
 <div id="events">
 
-    <table class="table">
+    <table id="table" class="table" data-filter-control="true" data-show-search-clear-button="true" data-search-on-enter-key="true">
         <thead>
             <tr>
-                <th>Child</th>
-                <th>Event Type</th>
+                <th data-field="child_name" data-filter-control="input">Child</th>
+                <th data-field="event_type" data-filter-control="select">Event Type</th>
                 <th>Date & Time</th>
-                <th>Guardian</th>
+                <th data-field="guardian_name" data-filter-control="input">Guardian</th>
             </tr>
         </thead>
     
@@ -36,3 +36,14 @@
     </table>
 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+<script>
+  $(function() {
+    $('#table').bootstrapTable()
+  })
+</script>
