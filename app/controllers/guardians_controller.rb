@@ -41,6 +41,7 @@ class GuardiansController < ApplicationController
   def destroy
     @guardian.destroy
     flash.notice = "Guardian was successfully deleted!"
+    redirect_to guardians_path
   end
 
   private
