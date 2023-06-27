@@ -5,7 +5,9 @@
         <% @guardians.each do |guardian| %>
             <%= render guardian %>
             <p>
-                <%= link_to "Show", guardian %>
+                <%= link_to "Show", guardian %> |
+                <%= link_to "Edit", edit_guardian_path(guardian) %>
+                <%= button_to "Destroy this guardian", guardian, method: :delete, data: {turbo_confirm: "Are you sure?"} %>
             </p>
         <% end %>
     </div>

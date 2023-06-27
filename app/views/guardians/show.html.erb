@@ -1,23 +1,17 @@
 <div class="body-content">
   <%= render @guardian %>
 
-  <div>
-    <%= link_to "Edit this guardian", edit_guardian_path(@guardian) %> |
-    <%= link_to "Back to guardians", guardians_path %>
-    <%= button_to "Destroy this guardian", @guardian, method: :delete %>
-  </div>
-
   <% if @guardian.children.present? %>
-    <table>
-      <tbody>
-        <% @guardian.children.each do |child| %>
-          <tr>
-            <td><%= child.first_name + ' ' + child.last_name%></td>
-            <td><%= button_to 'Drop Off', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => true }), class: "btn drop_off mx-1 my-1" %></td>
-            <td><%= button_to 'Pick Up', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => 0 }), class: "btn pick_up mx-1 my-1" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <table>
+    <tbody>
+      <% @guardian.children.each do |child| %>
+        <tr>
+          <td><%= child.first_name + ' ' + child.last_name%></td>
+          <td><%= button_to 'Drop Off', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => true }), class: "btn drop_off mx-1 my-1" %></td>
+          <td><%= button_to 'Pick Up', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => 0 }), class: "btn pick_up mx-1 my-1" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   <% end %>
 </div>
