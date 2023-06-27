@@ -1,14 +1,16 @@
-<h1>Enter your first and last names:</h1>
+<div class="body-content">
+    <h1>Enter your first and last names:</h1>
 
-<%= form_with url: "/guardians/login", method: :get do |form| %>
-    <%= form.label :first_name, "Guardian First Name" %>
-    <%= form.text_field :first_name %><br />
-    <%= form.label :last_name, "Guardian Last Name" %>
-    <%= form.text_field :last_name %><br />
-    <%= form.submit "Show Children"%>
-<% end %>
+    <%= form_with url: "/guardians/login", method: :get do |form| %>
+        <%= form.label :first_name, "Guardian First Name" %>
+        <%= form.text_field :first_name %><br />
+        <%= form.label :last_name, "Guardian Last Name" %>
+        <%= form.text_field :last_name %><br />
+        <%= form.submit "Show Children"%>
+    <% end %>
 
-<% if params[:first_name] %>
-    <% @guardian = Guardian.find_by!(first_name: params[:first_name], last_name: params[:last_name]) %>
-    <% controller.redirect_to @guardian %>
-<% end %>
+    <% if params[:first_name] %>
+        <% @guardian = Guardian.find_by!(first_name: params[:first_name], last_name: params[:last_name]) %>
+        <% controller.redirect_to @guardian %>
+    <% end %>
+</div>

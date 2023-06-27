@@ -1,43 +1,48 @@
-<h1>Journal Log</h1>
+<div class="body-content">
+    <h1>Journal Log</h1>
 
-<div id="events">
+    <div id="events">
 
-    <table id="table" class="table" data-filter-control="true" data-show-search-clear-button="true" data-search-on-enter-key="true">
-        <thead>
-            <tr>
-                <th data-field="child_name" data-filter-control="input">Child</th>
-                <th data-field="event_type" data-filter-control="select">Event Type</th>
-                <th>Date & Time</th>
-                <th data-field="guardian_name" data-filter-control="input">Guardian</th>
-            </tr>
-        </thead>
-    
-        <tbody>
-            <% @events.each do |event| %>
-                <% child = Child.find_by_id(event.child_id) %>
-                <% child_name = child.first_name + ' '+ child.last_name %>
-                <% guardian = Guardian.find_by_id(event.guardian_id) %>
-                <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
-                <% if event.event_type
-                    event_name = "Drop Off"
-                    row_class = "table-warning"
-                else
-                    event_name = "Pick Up"
-                    row_class = "table-info"
-                end %>
-                <tr class="<%= row_class =%>">
-                    <td><%= child_name %></td>
-                    <td><%= event_name %></td>
-                    <td><%= event.created_at.strftime("%a, %B %d, %Y %I:%M %p") %></td>
-                    <td><%= guardian_name %></td>
+        <table id="table" data-filter-control="true" data-show-search-clear-button="true" data-search-on-enter-key="true" data-pagination="true">
+            <thead>
+                <tr>
+                    <th data-field="child_name" data-filter-control="input">Child</th>
+                    <th data-field="event_type" data-filter-control="select">Event Type</th>
+                    <th data-field="date_time" data-filter-control="input">Date & Time</th>
+                    <th data-field="guardian_name" data-filter-control="input">Guardian</th>
                 </tr>
-            <% end %>
-        </tbody>
-    </table>
+            </thead>
+        
+            <tbody>
+                <% @events.each do |event| %>
+                    <% child = Child.find_by_id(event.child_id) %>
+                    <% child_name = child.first_name + ' '+ child.last_name %>
+                    <% guardian = Guardian.find_by_id(event.guardian_id) %>
+                    <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
+                    <% if event.event_type
+                        event_name = "Drop Off"
+                        row_class = "drop_off"
+                    else
+                        event_name = "Pick Up"
+                        row_class = "pick_up"
+                    end %>
+                    <% date_time = event.created_at.strftime("%a, %B %d, %Y %I:%M %p") %>
+                    <tr class="<%= row_class =%>">
+                        <td><%= child_name %></td>
+                        <td><%= event_name %></td>
+                        <td><%= date_time %></td>
+                        <td><%= guardian_name %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
 
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<link href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css" rel="stylesheet">
 
 <script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.21.4/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>

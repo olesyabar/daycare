@@ -3,4 +3,20 @@
 
 /*
  *= require bootstrap-table/bootstrap-table
- */
+*/
+
+.body-content {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.drop_off {
+  background-color: #ffff9f;
+  --bs-table-bg: #ffff9f;
+}
+
+.pick_up {
+  background-color: #c9f29b;
+  --bs-table-bg: #c9f29b;
+}
