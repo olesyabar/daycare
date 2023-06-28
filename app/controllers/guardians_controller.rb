@@ -50,6 +50,6 @@ class GuardiansController < ApplicationController
     end
 
     def guardian_params
-      params.require(:guardian).permit(:first_name, :last_name)
+      params.require(:guardian).permit(:first_name, :last_name, child_ids: [] )
     end
 end
