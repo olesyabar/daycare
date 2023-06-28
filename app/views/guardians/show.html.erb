@@ -6,7 +6,7 @@
     <tbody>
       <% @guardian.children.each do |child| %>
         <tr>
-          <td><%= child.first_name + ' ' + child.last_name%></td>
+          <td><%= child.name %></td>
           <td><%= button_to 'Drop Off', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => true }), class: "btn drop_off mx-1 my-1" %></td>
           <td><%= button_to 'Pick Up', events_path(:event => { :child_id => child.id, :guardian_id => @guardian.id, :event_type => 0 }), class: "btn pick_up mx-1 my-1" %></td>
         </tr>
