@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_06_09_195819) do
   create_table "Events", force: :cascade do |t|
-    t.boolean "check_type"
+    t.boolean "event_type"
     t.integer "child_id", null: false
     t.integer "guardian_id", null: false
     t.datetime "created_at", null: false
