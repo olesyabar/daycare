@@ -4,4 +4,8 @@ class Child < ApplicationRecord
 
   validates :first_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
   validates :last_name, presence: true, format: { with: /\A[a-z\-' ]+\z/i }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

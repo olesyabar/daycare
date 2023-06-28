@@ -3,7 +3,7 @@
 
     <div id="events">
 
-        <table id="table" data-filter-control="true" data-show-search-clear-button="true" data-search-on-enter-key="true" data-pagination="true">
+        <table id="table" data-filter-control="true" data-show-search-clear-button="true" data-search-on-enter-key="true" data-pagination="true" data-page-size="20">
             <thead>
                 <tr>
                     <th data-field="child_name" data-filter-control="input">Child</th>
@@ -16,7 +16,7 @@
             <tbody>
                 <% @events.each do |event| %>
                     <% child = Child.find_by_id(event.child_id) %>
-                    <% child_name = child.first_name + ' '+ child.last_name %>
+                    <% child_name = child.name %>
                     <% guardian = Guardian.find_by_id(event.guardian_id) %>
                     <% guardian_name = guardian.first_name + ' ' + guardian.last_name %>
                     <% if event.event_type
