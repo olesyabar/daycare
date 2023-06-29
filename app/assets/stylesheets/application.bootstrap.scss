@@ -26,3 +26,21 @@
 .navbar-custom {
   background-color: #d5c8ff;
 }
+
+@font-face {
+  font-family: 'FanKids';
+  src: url('FanKids.ttf');
+}
+
+h1 {
+  font-family: 'FanKids';
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
